@@ -1,0 +1,75 @@
+{% comment %} 
+<div style="display: flex; justify-content: space-between;">
+									
+    <h6>میانگین امتیاز کالا :<span style="color: red;">{{product.get_average_score}}</span></h6>
+    {% if user.is_authenticated %}
+        {% if product.get_user_score > 0 %}
+            <div>
+                {% with ''|center:5 as range %}
+                    {% for i in range %}
+                        {% if forloop.counter <= product.get_user_score %}
+                            <span id="star_{{ forloop.counter }}" class="fa fa-star checked"></span> 
+                        {% else %}
+                            <span id="star_{{ forloop.counter }}" class="fa fa-star"></span>
+                        {% endif %}
+                    {% endfor %}
+                {% endwith %}
+            </div>
+        {% else %}
+            <div>
+                <span id="star_1" class="fa fa-star cursor-pointer" onclick="addScore(1, {{product.id}})"></span> 
+                <span id="star_2" class="fa fa-star cursor-pointer" onclick="addScore (2, {{product.id}})"></span> 
+                <span id="star_3" class="fa fa-star cursor-pointer" onclick="addScore (3, {{product.id}})"></span> 
+                <span id="star_4" class="fa fa-star cursor-pointer" onclick="addScore(4, {{product.id}})"></span> 
+                <span id="star_5" class="fa fa-star cursor-pointer" onclick="addScore(5, {{product.id}})"></span> 
+            </div>
+        {% endif %}
+    {% else %}
+        <h6 style="text-decoration: underline;">
+        برای امتیاز دهی
+        <a href="{% url 'accounts: login' %}?next=/products/product_details/{{product.slug}}/"></a>
+        با
+        <a href="{% url 'accounts:register' %}?next=/products/product_details/{{product.slug}}/"></a>
+        کنید
+        </h6> 
+    {% endif %}
+</div> {% endcomment %}
+{% comment %} </div> {% endcomment %}
+
+
+<div id="score_refresh" style="display: flex; justify-content: space-between;">
+									
+    <h6>میانگین امتیاز کالا :<span  id="avg_score_{{product.id}}" style="color: red;">{{product.get_average_score}}</span></h6>
+    {% if user.is_authenticated %}
+        {% if product.get_user_score > 0 %}
+            <div>
+                {% with ''|center:5 as range %}
+                    {% for i in range %}
+                        {% if forloop.counter <= product.get_user_score %}
+                            <span id="star_{{ forloop.counter }}" class="fa fa-star checked"></span> 
+                        {% else %}
+                            <span id="star_{{ forloop.counter }}" class="fa fa-star"></span>
+                        {% endif %}
+                    {% endfor %}
+                {% endwith %}
+            </div>
+        {% else %}
+            <div>
+                <span id="star_1" class="fa fa-star cursor-pointer" onclick="addScore(1, {{product.id}})"></span> 
+                <span id="star_2" class="fa fa-star cursor-pointer" onclick="addScore(2, {{product.id}})"></span> 
+                <span id="star_3" class="fa fa-star cursor-pointer" onclick="addScore(3, {{product.id}})"></span> 
+                <span id="star_4" class="fa fa-star cursor-pointer" onclick="addScore(4, {{product.id}})"></span> 
+                <span id="star_5" class="fa fa-star cursor-pointer" onclick="addScore(5, {{product.id}})"></span> 
+            </div>
+        {% endif %}
+    {% else %}
+        <h6 style="text-decoration: underline;">
+        برای امتیاز دهی
+        <a href="{% url 'accounts:login' %}?next=/products/product_details/{{product.slug}}/"></a>
+        با
+        <a href="{% url 'accounts:register' %}?next=/products/product_details/{{product.slug}}/"></a>
+        کنید
+        </h6> 
+    {% endif %}
+</div>
+</div>

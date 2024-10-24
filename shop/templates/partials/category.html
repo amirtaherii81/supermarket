@@ -1,0 +1,43 @@
+<li class="nav-links__item nav-links__item--with-submenu">
+  <a href="product-categories.html">
+    <span>
+      دسته بندی کالاها
+      &nbsp;
+      <i class="fa fa-angle-down"></i>
+    </span>
+  </a>
+  <div class="nav-links__megamenu nav-links__megamenu--size--lg">
+    <!-- .megamenu -->
+    <div class="megamenu">
+      <div class="row">
+
+        {% for group_parent in group_parents %}
+          {% if group_parent.groups.all %}
+          <div class="col-3">
+            <ul class="megamenu__links megamenu__links--level--0">
+              <li class="megamenu__item megamenu__item--with-submenu">
+                <a href="{% url "products:products_parent_group" slug=group_parent.slug %}">{{group_parent}}</a>
+                <ul class="megamenu__links megamenu__links--level--1">
+
+                  {% for group in group_parent.groups.all %}
+                    {% if group.products_of_groups.all %}
+                      <li class="megamenu__item">
+                        <a href="{% url "products:products_groups" slug=group.slug %}">{{group}}</a>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+               
+                </ul>
+              </li>
+            </ul>
+          </div>
+          {% endif %}
+        {% endfor %}
+
+      </div>
+    </div>
+    <!-- .megamenu / end -->
+  </div>
+</li>
+
+

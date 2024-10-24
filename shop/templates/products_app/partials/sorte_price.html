@@ -1,0 +1,36 @@
+<div class="view-options__control">
+    <label for="">مرتب‌سازی بر اساس</label>
+    <div>
+      <select class="form-control form-control-sm" name="" id="select_sort" onchange="select_sort()">
+            {% if sort_type == '0' %}
+              <option value="0" selected>پیش فرض</option>
+              <option value="1">قیمت از کم به زیاد</option>
+              <option value="2">قیمت از زیاد به کم</option>
+
+            {% elif sort_type == '1' %}
+              <option value="0">پیش فرض</option>
+              <option value="1" selected>قیمت از کم به زیاد</option>
+              <option value="2">قیمت از زیاد به کم</option>
+                
+            {% elif sort_type == '2' %}
+              <option value="0">پیش فرض</option>
+              <option value="1">قیمت از کم به زیاد</option>
+              <option value="2" selected>قیمت از زیاد به کم</option>
+              
+            {% endif %}
+      </select>
+    </div>
+</div>
+
+
+
+  {% comment %} <div class="view-options__control">  
+    <label for="select_sort">مرتب‌سازی بر اساس</label>  
+    <div>  
+        <select class="form-control form-control-sm" id="select_sort" onchange="select_sort()">  
+            <option value="0" {% if sort_type == '0' %} selected {% endif %}>پیش فرض</option>  
+            <option value="1" {% if sort_type == '1' %} selected {% endif %}>قیمت از کم به زیاد</option>  
+            <option value="2" {% if sort_type == '2' %} selected {% endif %}>قیمت از زیاد به کم</option>  
+        </select>  
+    </div>  
+</div>   {% endcomment %}

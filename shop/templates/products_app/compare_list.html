@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load render_partial %}
+
+{% block title %}
+صفحه مقایسه کالاها
+{% endblock title %}
+
+{% block content %}
+
+    <div id="compare_list">
+        {% render_partial "products:compare_table" %}
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}محصولات گروه{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="product-flexbox" style="">
+            {% for product in products %}
+            {% include 'partials/products/product_box.html' with type=1 %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

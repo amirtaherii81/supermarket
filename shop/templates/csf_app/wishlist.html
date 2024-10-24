@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load render_partial %}
+
+{% block title %}علاقه مندی ها{% endblock title %}
+
+{% block content %}
+
+
+    <div id="show_wishlist">
+        {% render_partial "csf:show_wishlist" %}
+    </div>
+
+
+{% endblock content %}

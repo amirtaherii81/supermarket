@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load render_partial %}
+{% block title %}
+    فروشگاه
+{% endblock title %}
+
+{% block content %}
+
+<div class="block-categories__list">
+    {% for group in product_groups %}
+        <div class="block-categories__item category-card category-card--layout--compact">
+            <div class="category-card__body">
+                <div class="category-card__image">
+                    <a href="">
+                        <img src="{{media_url}}{{group.image_name}}" alt="">
+                    </a>
+                </div>
+                <div class="category-card__content">
+                    <div class="category-card__name"><a href="">{{group.group_title}}</a></div>
+                    <div class="category-card__products">{{group.products_of_groups.all|length}} محصول</div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <a href="{% url "products:product_groups" %}">همه</a>
+</div>
+
+{% endblock content %}
